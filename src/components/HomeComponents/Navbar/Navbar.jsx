@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <>
       {/* ✅ Transparent Navbar */}
-      <nav className="w-full px-4 md:px-16 flex justify-between items-center py-1 absolute top-[-10] left-0 z-50 bg-transparent">
+      <nav className="w-full px-4 md:px-16 flex justify-between items-center py-2 absolute top-[-10] left-0 z-50 bg-transparent">
 
         {/* ✅ Logo (Always visible) */}
         <div className="flex items-center">
