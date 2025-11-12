@@ -22,7 +22,7 @@ import mogili_7 from './mogili-7.webp'
 
 import process from './process.webp'
 import water from  './Water.webp'
-import AboutHero from './AboutHero.webp'
+import AboutHero from './Abouthero.webp'
 import about from './about.png'
 import aboutm from './aboutm.png'
 import about_1 from './about-1.png'
