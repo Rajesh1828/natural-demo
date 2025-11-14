@@ -1,12 +1,15 @@
 import React from 'react'
 import ProductHero from '../components/ProductComponents/ProdutHero/ProductHero'
-import ProductList from '../components/ProductComponents/ProductList/ProductList'
+import DealerContactForm from '../components/ProductComponents/DealerContactform/DealerContactForm'
+import Dealer from '../components/ProductComponents/Dealer/Dealer'
 
 const Products = () => {
   return (
     <div>
       <ProductHero/> 
-      <ProductList/> 
+      <Dealer/>
+      <DealerContactForm/>
+
     </div>
   )
 }

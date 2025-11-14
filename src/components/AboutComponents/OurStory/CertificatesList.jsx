@@ -1,5 +1,6 @@
 import React from "react";
 import { FileText } from "lucide-react";
+import { motion } from "framer-motion";
 
 const CertificatesList = () => {
   const PdfFiles = [
@@ -15,20 +16,25 @@ const CertificatesList = () => {
 
   return (
     <div className="w-full flex justify-center py-10 bg-white">
-      <div className="w-[80%] grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="w-full md:w-[80%] grid grid-cols-1 sm:grid-cols-2 gap-6">
         {PdfFiles.map((item, index) => (
-          <a
+          <motion.a
             key={index}
             href={item.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-4 border-2 border-dashed border-[#145cab] rounded-3xl px-12 py-4 hover:bg-blue-50 transition-all duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center gap-4 border-2 border-dashed border-[#145cab] rounded-3xl px-8 sm:px-12 py-4 hover:bg-blue-50 transition-all duration-300 cursor-pointer"
           >
             <div className="bg-[#145cab] p-3 rounded-xl flex items-center justify-center">
               <FileText className="text-white w-6 h-6" />
             </div>
-            <p className="font-bold text-[#145cab] text-lg">{item.name}</p>
-          </a>
+            <p className="font-bold text-[#145cab] text-base sm:text-lg">{item.name}</p>
+          </motion.a>
         ))}
       </div>
     </div>

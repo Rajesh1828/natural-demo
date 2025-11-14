@@ -1,42 +1,38 @@
-
-import { FaFilter} from "react-icons/fa";
+import { motion } from "framer-motion";
 import OurProcesstwo from './OurProcesstwo';
 import { assets } from "../../../assets/assets";
 
+const processData = [
+  { img: assets.sandfilter, title: "sand filteration" },
+  { img: assets.activated, title: "activated carbon filteration" },
+  { img: assets.uv, title: "UV treatement" },
+  { img: "https://www.water-doctor.com/wp-content/uploads/2024/01/Water-Doctor-Reverse-Osmosis-Infographic-Screenshot.png", title: "reverse osmosis" },
+  { img: assets.ozone, title: "ozonation" },
+  { img: assets.mineral, title: "treated water with added minerals" },
+];
+
 const ProcessList = () => {
-    return (
-        <>
-        <div className='md:flex grid grid-cols-2 sm:grid-cols-4 text-center gap-20 md:px-10 md:py-10 px-4 py-4'>
-            <div className='flex flex-col  items-center gap-5'>
-                <img src={assets.sandfilter} className="w-20" alt="sandfilteration" />
-                <p className='text-base capitalize text-sky-400'>sand filteration</p>
-            </div>
-             <div className='flex flex-col  items-center gap-5'>
-                <img src={assets.activated} className="w-20" alt="activated" />
-                <p className='text-base capitalize text-sky-400'>Activated carbon filteration</p>
-            </div>
-             <div className='flex flex-col  items-center gap-5'>
-                <img src={assets.uv} alt="" className="w-20" />
-                <p className='text-base capitalize text-sky-400'>UV treatement</p>
-            </div>
-             <div className='flex flex-col  items-center gap-5'>
-                <img src={assets.ro} alt="" className="w-20" />
-                <p className='text-base capitalize text-sky-400'>reverse osmosis</p>
-            </div>
-             <div className='flex flex-col  items-center gap-5'>
-                                <img src={assets.ozone} className="w-20" alt="sandfilteration" />
-                <p className='text-base capitalize text-sky-400'>Ozonation</p>
-            </div>
-             <div className='flex flex-col  items-center gap-5'>
-                <img src={assets.mineral} className="w-20" alt="sandfilteration" />
-                <p className='text-base capitalize text-sky-400'>Treated Water with Added minerals
-                </p>
-            </div>
-        </div>
-        
-      <OurProcesstwo/>
-        </>
-    )
+  return (
+    <>
+      <div className='grid md:grid-cols-6 sm:grid-cols-3 grid-cols-2 text-center gap-10 md:px-10 md:py-10 px-4 py-4'>
+        {processData.map((item, index) => (
+          <motion.div
+            key={index}
+            className='flex flex-col items-center gap-5'
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+          >
+            <img src={item.img} alt={item.title} className="w-20" />
+            <p className='text-sm capitalize text-[#155da9]'>{item.title}</p>
+          </motion.div>
+        ))}
+      </div>
+
+      <OurProcesstwo />
+    </>
+  )
 }
 
-export default ProcessList
+export default ProcessList;

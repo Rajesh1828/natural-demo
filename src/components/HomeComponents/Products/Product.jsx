@@ -18,6 +18,7 @@ const Product = () => {
             className="w-full h-[700px] sm:h-[800px] object-cover"
           />
         </picture>
+        <div className="absolute inset-0 bg-black/15"></div>
 
         <motion.div initial={{opacity:0 , y:100}} whileInView={{opacity:1,y:0}} transition={{duration:1}} viewport={{once:true,amount:0.5}} className="content">
           <h2>Best Taste The Richness</h2>

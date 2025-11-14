@@ -21,9 +21,9 @@ const Refresh = () => {
       {/* Right Side */}
       <div className="mt-6 md:mt-0 md:w-auto">
         <img
-          src={assets.ab}
+          src={assets.man}
           alt="person"
-          className="w-[260px] md:w-[380px] object-contain"
+          className="w-[300px] md:w-[300px] object-contain"
         />
       </div>
     </div>

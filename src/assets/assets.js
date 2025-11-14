@@ -44,6 +44,9 @@ import lasthomem from './lasthomem.png'
  import m_2 from './m_2.png'
  import m_3 from './m_3.png'
  import m_4 from './m_4.png'
+ 
+ import man from './man.png'
+ import dealership from './dealership.png'
 
 export const assets = {
     logo,
@@ -89,5 +92,8 @@ export const assets = {
     m_2,
     m_3,
     m_4,
-    aboutm
+    aboutm,
+
+    man,
+    dealership
 }

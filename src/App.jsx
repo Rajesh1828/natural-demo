@@ -8,17 +8,20 @@ import Navbar from './components/HomeComponents/Navbar/Navbar'
 import Footer from './components/Footer'
 import { Scroll } from 'lucide-react'
 import ScrollToTop from './ScrollToTop'
+  import { ToastContainer } from 'react-toastify';
+
 
 const App = () => {
   return (
     <div>
       <Navbar />
+      <ToastContainer/>
       <ScrollToTop/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/products" element={<Products />} />
+        <Route path="/dealership" element={<Products />} />
 
       </Routes>
       <Footer/>
