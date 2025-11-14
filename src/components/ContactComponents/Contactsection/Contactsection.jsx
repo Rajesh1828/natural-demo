@@ -7,42 +7,53 @@ import { motion } from 'framer-motion'
 
 const Contactsection = () => {
 
-  const[contactForm,setContactForm]=useState({
-    name:"",
-    email:"",
-    number:"",
-    message:""
-    })
-    const contactFormHandler =(e)=>{
-        const{name}= e.target;
-        const{value}= e.target;
-        setContactForm({...contactForm,[name]:value})
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    email: "",
+    number: "",
+    message: ""
+  });
+
+  const [loading, setLoading] = useState(false); // loading state
+
+  const contactFormHandler = (e) => {
+    const { name, value } = e.target;
+    setContactForm({ ...contactForm, [name]: value });
+  }
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    setLoading(true); // start loading
+
+    try {
+      const res = await fetch("https://nw-1-34i9.onrender.com/api/contact/email", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(contactForm)
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        toast.success(data.message);
+        setContactForm({
+          name: "",
+          email: "",
+          number: "",
+          message: ""
+        });
+      } else {
+        toast.error(data.message);
+      }
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false); // stop loading
     }
+  }
 
-    const submitHandler=async(e)=>{
-     e.preventDefault();
-const res = await fetch("http://localhost:5000/api/contact/email",{
-    method:'POST',
-    headers:{
-        'Content-Type':'application/json'
-    
-    },
-    body:JSON.stringify(contactForm)
-});
- const data = await res.json();
-
- if(data.success){
-    toast.success(data.message);
-    setContactForm({
-        name:"",
-        email:"",
-        number:"",
-        message:""
-    });
- }else{
-    toast.error(data.message);
- }
-}
 
 
     return (
@@ -149,11 +160,12 @@ const res = await fetch("http://localhost:5000/api/contact/email",{
                     </div>
 
                     <button
-                        type="submit"
-                        className="hover:bg-[#145cab] border  border-[#145cab] w-50 hover:text-white  text-[#021D34] py-2 px-6 rounded-lg cursor-pointer  transition-all duration-300"
-                    >
-                        Send Message
-                    </button>
+            type="submit"
+            disabled={loading} // disable during loading
+            className={`border w-50 py-2 px-6 rounded-lg transition-all duration-300 ${loading ? 'bg-gray-400 text-gray-200 cursor-not-allowed' : 'border-[#145cab] hover:bg-[#145cab] hover:text-white text-[#021D34]'}`}
+          >
+            {loading ? 'Sending...' : 'Send Message'}
+          </button>
                 </form>
             </div>
         </div>
